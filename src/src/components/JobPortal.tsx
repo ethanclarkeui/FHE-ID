@@ -88,7 +88,7 @@ export function JobPortal() {
               address: CONTRACT_ADDRESS,
               abi: CONTRACT_ABI,
               functionName: 'getApplicationResult',
-              args: [address, BigInt(company.id)],
+              args: [address, company.id],
             });
             return [company.id, result as string];
           })

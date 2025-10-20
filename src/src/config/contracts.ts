@@ -1,7 +1,5 @@
-// ZamaKYC contract deployed on Sepolia
 export const CONTRACT_ADDRESS = '0xf4E108370534b182a1eDd83B5b3786aF94176568';
 
-// Generated ABI from contract artifacts - Auto-synced from ZamaKYC.json
 export const CONTRACT_ABI = [
   {
     "inputs": [],
@@ -14,23 +12,17 @@ export const CONTRACT_ABI = [
       {
         "indexed": true,
         "internalType": "address",
-        "name": "user",
+        "name": "account",
         "type": "address"
       },
       {
-        "indexed": false,
-        "internalType": "enum ZamaKYC.KYCStatus",
-        "name": "oldStatus",
-        "type": "uint8"
-      },
-      {
-        "indexed": false,
-        "internalType": "enum ZamaKYC.KYCStatus",
-        "name": "newStatus",
+        "indexed": true,
+        "internalType": "uint8",
+        "name": "companyId",
         "type": "uint8"
       }
     ],
-    "name": "KYCStatusChanged",
+    "name": "ApplicationEvaluated",
     "type": "event"
   },
   {
@@ -39,17 +31,17 @@ export const CONTRACT_ABI = [
       {
         "indexed": true,
         "internalType": "address",
-        "name": "user",
+        "name": "account",
         "type": "address"
       },
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
       }
     ],
-    "name": "KYCSubmitted",
+    "name": "UserRegistered",
     "type": "event"
   },
   {
@@ -58,27 +50,103 @@ export const CONTRACT_ABI = [
       {
         "indexed": true,
         "internalType": "address",
-        "name": "previousOwner",
+        "name": "account",
         "type": "address"
       },
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
       }
     ],
-    "name": "OwnershipTransferred",
+    "name": "UserUpdated",
     "type": "event"
   },
   {
-    "inputs": [],
-    "name": "getAllRegisteredUsers",
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "companyId",
+        "type": "uint8"
+      }
+    ],
+    "name": "applyToCompany",
     "outputs": [
       {
-        "internalType": "address[]",
+        "internalType": "ebool",
         "name": "",
-        "type": "address[]"
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "companyId",
+        "type": "uint8"
+      }
+    ],
+    "name": "getApplicationResult",
+    "outputs": [
+      {
+        "internalType": "ebool",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "companyId",
+        "type": "uint8"
+      }
+    ],
+    "name": "getCompanyRequirement",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint8",
+            "name": "id",
+            "type": "uint8"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "uint32",
+            "name": "minimumAge",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "requiredNationalityId",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint64",
+            "name": "minimumSalary",
+            "type": "uint64"
+          }
+        ],
+        "internalType": "struct EncryptedJobRegistry.CompanyRequirement",
+        "name": "requirement",
+        "type": "tuple"
       }
     ],
     "stateMutability": "view",
@@ -88,36 +156,12 @@ export const CONTRACT_ABI = [
     "inputs": [
       {
         "internalType": "address",
-        "name": "user",
+        "name": "account",
         "type": "address"
       }
     ],
-    "name": "getKYCDocumentHash",
+    "name": "getUserProfile",
     "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "getKYCInfo",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "identityDocumentHash",
-        "type": "string"
-      },
       {
         "internalType": "string",
         "name": "name",
@@ -125,87 +169,22 @@ export const CONTRACT_ABI = [
       },
       {
         "internalType": "euint32",
-        "name": "nationality",
+        "name": "birthYear",
         "type": "bytes32"
       },
       {
         "internalType": "euint32",
-        "name": "birthYear",
+        "name": "nationality",
         "type": "bytes32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "getKYCName",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "getKYCStatus",
-    "outputs": [
-      {
-        "internalType": "enum ZamaKYC.KYCStatus",
-        "name": "",
-        "type": "uint8"
       },
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getPendingKYCCount",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "hasKYCRecord",
-    "outputs": [
+        "internalType": "euint64",
+        "name": "salary",
+        "type": "bytes32"
+      },
       {
         "internalType": "bool",
-        "name": "",
+        "name": "exists",
         "type": "bool"
       }
     ],
@@ -216,11 +195,11 @@ export const CONTRACT_ABI = [
     "inputs": [
       {
         "internalType": "address",
-        "name": "user",
+        "name": "account",
         "type": "address"
       }
     ],
-    "name": "isKYCVerified",
+    "name": "hasProfile",
     "outputs": [
       {
         "internalType": "bool",
@@ -233,12 +212,39 @@ export const CONTRACT_ABI = [
   },
   {
     "inputs": [],
-    "name": "owner",
+    "name": "listCompanyRequirements",
     "outputs": [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
+        "components": [
+          {
+            "internalType": "uint8",
+            "name": "id",
+            "type": "uint8"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "uint32",
+            "name": "minimumAge",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "requiredNationalityId",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint64",
+            "name": "minimumSalary",
+            "type": "uint64"
+          }
+        ],
+        "internalType": "struct EncryptedJobRegistry.CompanyRequirement[]",
+        "name": "companies",
+        "type": "tuple[]"
       }
     ],
     "stateMutability": "view",
@@ -260,55 +266,23 @@ export const CONTRACT_ABI = [
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "registeredUsers",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "rejectKYC",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "string",
-        "name": "_identityDocumentHash",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_name",
+        "name": "name",
         "type": "string"
       },
       {
         "internalType": "externalEuint32",
-        "name": "_nationality",
+        "name": "encryptedBirthYear",
         "type": "bytes32"
       },
       {
         "internalType": "externalEuint32",
-        "name": "_birthYear",
+        "name": "encryptedNationality",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "externalEuint64",
+        "name": "encryptedSalary",
         "type": "bytes32"
       },
       {
@@ -317,33 +291,7 @@ export const CONTRACT_ABI = [
         "type": "bytes"
       }
     ],
-    "name": "submitKYC",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-      }
-    ],
-    "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "verifyKYC",
+    "name": "registerUser",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
