@@ -1,0 +1,57 @@
+.job-portal {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.portal-content {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.tab-navigation {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tab-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.tab-button {
+  padding: 0.75rem 0.25rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #6b7280;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tab-button.active {
+  border-bottom-color: #2563eb;
+  color: #1d4ed8;
+}
+
+.tab-button.inactive:hover {
+  color: #374151;
+  border-bottom-color: #d1d5db;
+}
+
+.portal-error {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+@media (min-width: 768px) {
+  .portal-content {
+    padding: 3rem 0;
+  }
+}
