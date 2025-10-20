@@ -4,7 +4,7 @@ import { useAccount } from 'wagmi';
 
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from '../config/contracts';
 import { useEthersSigner } from '../hooks/useEthersSigner';
-import type { CompanyRequirement } from '../types/registry';
+import type { CompanyRequirement } from '../type/registry';
 import '../styles/CompanyBoard.css';
 
 interface CompanyBoardProps {

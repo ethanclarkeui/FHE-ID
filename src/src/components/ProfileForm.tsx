@@ -5,7 +5,7 @@ import { useAccount } from 'wagmi';
 
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from '../config/contracts';
 import { useEthersSigner } from '../hooks/useEthersSigner';
-import type { StoredProfile } from '../types/registry';
+import type { StoredProfile } from '../type/registry';
 import '../styles/ProfileForm.css';
 
 const NATIONALITY_OPTIONS = [

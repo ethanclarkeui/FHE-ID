@@ -3,7 +3,7 @@ import { useAccount, usePublicClient, useReadContract } from 'wagmi';
 
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from '../config/contracts';
 import { useZamaInstance } from '../hooks/useZamaInstance';
-import type { CompanyRequirement, StoredProfile } from '../types/registry';
+import type { CompanyRequirement, StoredProfile } from '../type/registry';
 import { CompanyBoard } from './CompanyBoard';
 import { Header } from './Header';
 import { ProfileForm } from './ProfileForm';
