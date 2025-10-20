@@ -1,35 +1,57 @@
 .profile-card {
-  background-color: #ffffff;
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.1);
-  padding: 2rem;
+  background: var(--color-bg-primary);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08), 0 8px 12px -2px rgba(0, 0, 0, 0.04);
+  padding: 2.5rem;
   margin-bottom: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(50px, -50px);
+  pointer-events: none;
 }
 
 .profile-title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .profile-description {
-  color: #4b5563;
+  color: var(--color-text-secondary);
   font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .profile-form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .form-row {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .form-field {
@@ -38,36 +60,43 @@
 }
 
 .form-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-gray-700);
+  margin-bottom: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .text-input,
 .select-input {
   width: 100%;
-  padding: 0.75rem 0.9rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 0.6rem;
   font-size: 0.95rem;
-  background-color: #ffffff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--color-bg-primary);
+  transition: all 0.3s ease;
+  background-image: linear-gradient(var(--color-bg-primary), var(--color-bg-primary));
+  background-clip: padding-box;
+}
+
+.text-input:hover,
+.select-input:hover {
+  border-color: var(--color-gray-400);
 }
 
 .text-input:focus,
 .select-input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15), inset 0 0 0 1px rgba(37, 99, 235, 0.1);
   outline: none;
 }
 
 .help-text {
-  margin-top: 0.35rem;
+  margin-top: 0.4rem;
   font-size: 0.8rem;
-  color: #6b7280;
+  color: var(--color-gray-500);
 }
 
 .primary-button,
@@ -76,87 +105,129 @@
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.6rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease;
   border: none;
+  font-size: 0.95rem;
 }
 
 .primary-button {
   width: 100%;
-  padding: 0.85rem;
-  background-color: #2563eb;
-  color: #ffffff;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
 .primary-button:hover {
-  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.primary-button:hover::before {
+  left: 100%;
 }
 
 .primary-button:disabled {
-  background-color: #9ca3af;
+  background: var(--color-gray-300);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .secondary-button {
   margin-top: 1rem;
-  padding: 0.65rem 1rem;
-  background-color: #f3f4f6;
-  color: #1f2937;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+  border: 1px solid var(--color-gray-300);
 }
 
 .secondary-button:hover {
-  background-color: #e5e7eb;
+  background-color: var(--color-gray-200);
+  border-color: var(--color-gray-400);
 }
 
 .profile-error {
-  margin-top: 0.25rem;
-  color: #b91c1c;
+  margin-top: 0.4rem;
+  color: var(--color-error);
   font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .profile-success {
-  margin-top: 0.25rem;
-  color: #15803d;
+  margin-top: 0.4rem;
+  color: var(--color-success);
   font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .profile-message {
-  color: #4b5563;
+  color: var(--color-text-secondary);
   font-size: 0.95rem;
 }
 
 .profile-summary {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #e5e7eb;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--color-gray-100);
 }
 
 .summary-title {
   font-size: 1.1rem;
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
 }
 
 .summary-text {
-  color: #374151;
-  margin-bottom: 0.5rem;
+  color: var(--color-gray-700);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .summary-highlight {
-  font-weight: 600;
-  color: #1d4ed8;
+  font-weight: 700;
+  color: var(--color-primary);
 }
 
 .decrypted-details {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  background-color: #eff6ff;
-  border: 1px solid #bfdbfe;
-  border-radius: 0.5rem;
-  color: #1e3a8a;
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0.04) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  border-radius: 0.6rem;
+  color: var(--color-primary-dark);
+  position: relative;
+}
+
+.decrypted-details::before {
+  content: '✓';
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 1.5rem;
+  color: var(--color-success);
+  opacity: 0.5;
 }
 
 @media (min-width: 768px) {
@@ -166,5 +237,9 @@
 
   .form-row .form-field {
     flex: 1;
+  }
+
+  .profile-card {
+    padding: 3rem;
   }
 }

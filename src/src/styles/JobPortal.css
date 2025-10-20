@@ -1,6 +1,6 @@
 .job-portal {
   min-height: 100vh;
-  background-color: #f9fafb;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
 }
 
 .portal-content {
@@ -10,48 +10,95 @@
 }
 
 .tab-navigation {
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0;
+  border-bottom: 2px solid var(--color-gray-200);
+  background: var(--color-bg-primary);
+  border-radius: 0.75rem 0.75rem 0 0;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 1rem;
 }
 
 .tab-nav {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .tab-button {
-  padding: 0.75rem 0.25rem;
+  position: relative;
+  padding: 1rem 0.5rem;
   border: none;
-  border-bottom: 2px solid transparent;
   background: none;
   cursor: pointer;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #6b7280;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  color: var(--color-gray-500);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  padding-bottom: 1rem;
+  margin-bottom: -2px;
+}
+
+.tab-button:hover {
+  color: var(--color-text-primary);
 }
 
 .tab-button.active {
-  border-bottom-color: #2563eb;
-  color: #1d4ed8;
+  color: var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px 2px 0 0;
 }
 
 .tab-button.inactive:hover {
-  color: #374151;
-  border-bottom-color: #d1d5db;
+  color: var(--color-gray-700);
 }
 
 .portal-error {
   margin-bottom: 1.5rem;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  background-color: #fef2f2;
-  color: #b91c1c;
-  border: 1px solid #fecaca;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+  border: 1px solid #f87171;
+  border-left: 4px solid var(--color-error);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.portal-error::before {
+  content: '⚠️';
+  font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
   .portal-content {
     padding: 3rem 0;
+  }
+
+  .tab-navigation {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    background: none;
+    border-radius: 0;
   }
 }
