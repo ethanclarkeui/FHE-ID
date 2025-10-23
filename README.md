@@ -1,6 +1,6 @@
-# Encrypted Job Registry
+# FHE-ID
 
-Encrypted Job Registry is a privacy-preserving hiring dApp that stores applicant metadata with Fully Homomorphic Encryption (FHE). Candidates submit their name, birth year, nationality identifier, and annual salary. Only the name is visible on-chain. Age, nationality, and salary remain encrypted, yet the platform can still evaluate whether a candidate qualifies for each company’s requirements. The solution demonstrates how Zama’s FHE tooling can power confidential web3 workflows without sacrificing verifiability.
+FHE-ID is a privacy-preserving hiring dApp that stores applicant metadata with Fully Homomorphic Encryption (FHE). Candidates submit their name, birth year, nationality identifier, and annual salary. Only the name is visible on-chain. Age, nationality, and salary remain encrypted, yet the platform can still evaluate whether a candidate qualifies for each company’s requirements. The solution demonstrates how Zama’s FHE tooling can power confidential web3 workflows without sacrificing verifiability.
 
 ## Overview
 
