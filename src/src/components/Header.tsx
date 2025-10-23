@@ -7,7 +7,7 @@ export function Header() {
       <div className="header-container">
         <div className="header-content">
           <div className="header-left">
-            <h1 className="header-title">Encrypted Talent Portal</h1>
+            <h1 className="header-title">FHE ID</h1>
             <span className="header-badge">Confidential recruitment</span>
           </div>
           <ConnectButton />
