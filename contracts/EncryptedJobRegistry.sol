@@ -2,9 +2,9 @@
 pragma solidity ^0.8.24;
 
 import {FHE, ebool, euint32, euint64, externalEuint32, externalEuint64} from "@fhevm/solidity/lib/FHE.sol";
-import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
+import {ZamaEthereumConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
 
-contract EncryptedJobRegistry is SepoliaConfig {
+contract EncryptedJobRegistry is ZamaEthereumConfig {
     uint32 private constant CURRENT_YEAR = 2024;
 
     struct UserProfile {
